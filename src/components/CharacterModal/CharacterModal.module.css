@@ -1,8 +1,14 @@
 .modal {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
   padding: 24px 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .avatar {
@@ -16,4 +22,17 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+@media (max-width: 800px) {
+  .modal {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info {
+    flex-direction: row;
+  }
+  .details {
+    width: 50%;
+  }
 }
