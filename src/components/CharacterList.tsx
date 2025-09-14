@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCharacters } from '../api/client';
 import { Page } from '../api/client.types';
+import CharacterCard from './CharacterCard';
 
 export default function CharacterList() {
   const [data, setData] = useState<Page | null>(null);
@@ -17,9 +18,9 @@ export default function CharacterList() {
 
   return (
     <div>
-      {(data?.results || []).map((c) => {
-        return <div key={c.id}>{c.name}</div>;
-      })}
+      {(data?.results || []).map((c) => (
+        <CharacterCard character={c} key={c.id} />
+      ))}
     </div>
   );
 }
