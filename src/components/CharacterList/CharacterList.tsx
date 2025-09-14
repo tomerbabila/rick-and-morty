@@ -9,14 +9,14 @@ export default function CharacterList() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    fetchCharacters()
+    fetchCharacters({ name: query })
       .then((data) => {
         setData(data);
       })
       .catch((error) => {
         console.error('Error fetching characters:', error);
       });
-  }, []);
+  }, [query]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
