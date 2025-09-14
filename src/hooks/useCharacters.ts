@@ -2,7 +2,7 @@ import { fetchCharacters } from 'api/client';
 import { Page } from 'api/client.types';
 import { useEffect, useState } from 'react';
 
-export function useCharacters(query: string, page?: number) {
+export function useCharacters(query: string, page: number) {
   const [data, setData] = useState<Page | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);

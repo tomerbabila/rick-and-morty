@@ -1,20 +1,39 @@
 import React, { useState } from 'react';
 import styles from './CharacterList.module.css';
-import CharacterCard from 'components/CharacterCard';
 import { useCharacters } from 'hooks/useCharacters';
+
+import CharacterCard from 'components/CharacterCard/CharacterCard';
+import Pagination from 'components/Pagination/Pagination';
 
 export default function CharacterList() {
   const [query, setQuery] = useState('');
-  const { data, loading, error } = useCharacters(query);
+  const [page, setPage] = useState(1);
+  const { data, loading, error } = useCharacters(query, page);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
   };
 
+  const handlePreviousPage = () => {
+    setPage((p) => Math.max(p - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setPage((p) => p + 1);
+  };
+
   return (
     <>
-      <input placeholder='Search by name...' value={query} onChange={handleSearchChange} />
+      <div className={styles.controls}>
+        <input placeholder='Search by name...' value={query} onChange={handleSearchChange} />
+        <Pagination
+          hasPrevious={!!data?.info.prev}
+          hasNext={!!data?.info.next}
+          onPrevious={handlePreviousPage}
+          onNext={handleNextPage}
+        />
+      </div>
       <div className={styles.list}>
         {loading && <div>Loading…</div>}
         {error && <div>Error: {error.message}</div>}
