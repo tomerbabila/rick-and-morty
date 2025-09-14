@@ -22,3 +22,11 @@ export interface Character {
   episode: string[];
   origin: { name: string; url: string };
 }
+
+// According to https://rickandmortyapi.com/documentation/#location-schema
+export interface Location {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+}

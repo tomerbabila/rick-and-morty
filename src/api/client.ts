@@ -1,4 +1,4 @@
-import { Page } from './client.types';
+import { Location, Page } from './client.types';
 
 const BASE = 'https://rickandmortyapi.com/api';
 
@@ -14,5 +14,15 @@ export async function fetchCharacters(params: { page?: number; name?: string } =
     }
     throw new Error(`Failed to fetch characters (HTTP ${res.status})`);
   }
+
+  return res.json();
+}
+
+export async function fetchLocationByUrl(url: string): Promise<Location | null> {
+  if (!url) return null;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch location (HTTP ${res.status})`);
+
   return res.json();
 }

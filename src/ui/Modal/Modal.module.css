@@ -12,7 +12,7 @@
   backdrop-filter: blur(8px);
 }
 .modal {
-  width: 520px;
+  width: 75%;
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;
