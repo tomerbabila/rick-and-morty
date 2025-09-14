@@ -38,7 +38,7 @@ export default function CharacterList() {
       <div className={styles.list}>
         {loading && <div>Loading…</div>}
         {error && <div>Error: {error.message}</div>}
-        {(data?.results || []).map((c) => (
+        {((!error && !loading && data?.results) || []).map((c) => (
           <CharacterCard character={c} key={c.id} />
         ))}
       </div>
