@@ -1,7 +1,7 @@
 import { Character } from 'api/client.types';
 import React from 'react';
 import styles from './CharacterModal.module.css';
-import { useLocation } from 'hooks/useLocation';
+import { useOrigin } from 'hooks/useOrigin';
 import CharacterModalDetail from './CharacterModalDetail';
 
 interface CharacterModalProps {
@@ -9,7 +9,7 @@ interface CharacterModalProps {
 }
 
 export default function CharacterModal({ character }: CharacterModalProps) {
-  const { data: locationData, loading, error } = useLocation(character.origin.url);
+  const { data: originData, loading, error } = useOrigin(character.origin.url);
 
   return (
     <div className={styles.modal}>
@@ -26,11 +26,11 @@ export default function CharacterModal({ character }: CharacterModalProps) {
           <h3>Origin:</h3>
           {loading && <div>Loading origin...</div>}
           {error && <div>Error loading origin: {error.message}</div>}
-          {locationData && !loading && !error ? (
+          {originData && !loading && !error ? (
             <>
-              <CharacterModalDetail title='Name' value={locationData?.name} />
-              <CharacterModalDetail title='Type' value={locationData?.type} />
-              <CharacterModalDetail title='Dimension' value={locationData?.dimension} />
+              <CharacterModalDetail title='Name' value={originData?.name} />
+              <CharacterModalDetail title='Type' value={originData?.type} />
+              <CharacterModalDetail title='Dimension' value={originData?.dimension} />
             </>
           ) : (
             <div className={styles.details}>No origin data available.</div>

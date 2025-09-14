@@ -2,7 +2,7 @@ import { fetchLocationByUrl } from 'api/client';
 import { Location } from 'api/client.types';
 import { useEffect, useState } from 'react';
 
-export function useLocation(url: string) {
+export function useOrigin(url: string) {
   const [data, setData] = useState<Location | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
