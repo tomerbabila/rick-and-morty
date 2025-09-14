@@ -4,11 +4,12 @@ import { Character } from 'api/client.types';
 
 interface CharacterCardProps {
   character: Character;
+  setShowModal: React.Dispatch<React.SetStateAction<Character | null>>;
 }
 
-export default function CharacterCard({ character }: CharacterCardProps) {
+export default function CharacterCard({ character, setShowModal }: CharacterCardProps) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => setShowModal(character)}>
       <img className={styles.img} src={character.image} alt={character.name} />
       <h3 className={styles.name}>{character.name}</h3>
     </div>

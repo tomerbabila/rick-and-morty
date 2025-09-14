@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Home.module.css';
-import { CharacterList } from '../../components';
+import { CharacterList, Modal } from '../../components';
+import { Character } from 'api/client.types';
 
 export default function Home() {
+  const [character, setShowModal] = useState<Character | null>(null);
   return (
     <div className={styles.home}>
       <h1 className={styles.title}>Rick & Morty App</h1>
       <div className={styles.content}>
         <div className={styles.panel}>
-          <CharacterList />
+          <CharacterList setShowModal={setShowModal} />
         </div>
         <div className={styles.panel}>
           {/* Favorites placeholder */}
@@ -17,6 +19,7 @@ export default function Home() {
           facere neque.
         </div>
       </div>
+      {!!character && <Modal character={character} setShowModal={setShowModal} />}
     </div>
   );
 }

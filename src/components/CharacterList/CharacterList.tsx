@@ -4,8 +4,13 @@ import { useCharacters } from 'hooks/useCharacters';
 
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 import Pagination from 'components/Pagination/Pagination';
+import { Character } from 'api/client.types';
 
-export default function CharacterList() {
+export default function CharacterList({
+  setShowModal,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<Character | null>>;
+}) {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const { data, loading, error } = useCharacters(query, page);
@@ -39,9 +44,11 @@ export default function CharacterList() {
         {loading && <div>Loading…</div>}
         {error && <div>Error: {error.message}</div>}
         {(data?.results || []).map((c) => (
-          <CharacterCard character={c} key={c.id} />
+          <CharacterCard character={c} key={c.id} setShowModal={setShowModal} />
         ))}
       </div>
+      {/* TODO: implement empty state */}
+      {/* TODO: design loading component */}
     </>
   );
 }

@@ -8,7 +8,6 @@ export function useCharacters(query: string, page: number) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const debounced = useDebounce(query, 300);
-  // TODO: implement 404
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +17,7 @@ export function useCharacters(query: string, page: number) {
       .then((data) => {
         setData(data);
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         setError(error);
         console.error('Error fetching characters:', error);
       })
