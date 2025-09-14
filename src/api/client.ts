@@ -1,6 +1,8 @@
+import { Page } from './client.types';
+
 const BASE = 'https://rickandmortyapi.com/api';
 
-export async function fetchCharacters(params: { page?: number; name?: string } = {}): Promise<any> {
+export async function fetchCharacters(params: { page?: number; name?: string } = {}): Promise<Page> {
   const url = new URL(`${BASE}/character`);
   if (params.page) url.searchParams.set('page', String(params.page));
   if (params.name) url.searchParams.set('name', params.name);
