@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import { CharacterList } from './components';
+import { Layout, Home } from './pages';
 
 function App() {
   return (
-    <div>
-      <CharacterList />
-    </div>
+    <Layout>
+      <Home />
+    </Layout>
   );
 }
 
