@@ -6,5 +6,10 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  return <div className={styles.layout}>{children}</div>;
+  return (
+    <div className={styles.layout}>
+      {children}
+      <div id='modal-root'></div>
+    </div>
+  );
 }
