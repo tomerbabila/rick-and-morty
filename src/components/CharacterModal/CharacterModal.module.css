@@ -1,0 +1,19 @@
+.modal {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px;
+}
+
+.avatar {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border: 1px solid black;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CharacterCard.module.css';
 import { Character } from 'api/client.types';
 import Modal from 'ui/Modal/Modal';
+import CharacterModal from 'components/CharacterModal/CharacterModal';
 
 interface CharacterCardProps {
   character: Character;
@@ -20,7 +21,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         <h3 className={styles.name}>{character.name}</h3>
       </div>
       <Modal isOpen={showModal} onClose={closeModal} title={character.name}>
-        <div>{character.name}</div>
+        <CharacterModal character={character} />
       </Modal>
     </>
   );

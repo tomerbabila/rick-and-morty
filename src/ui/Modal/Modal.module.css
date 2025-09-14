@@ -9,6 +9,7 @@
   justify-content: center;
   z-index: 1000;
   background-color: transparent;
+  backdrop-filter: blur(8px);
 }
 .modal {
   width: 520px;
@@ -21,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  padding: 8px 16px;
 }
 
 .closeButton {
@@ -31,13 +32,7 @@
   cursor: pointer;
 }
 
-.title {
-  margin: 0;
-  font-size: 20px;
-}
-
 .divider {
   height: 1px;
   background-color: black;
-  margin-top: 8px;
 }
