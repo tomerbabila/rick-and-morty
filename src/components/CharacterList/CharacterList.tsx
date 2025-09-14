@@ -13,6 +13,7 @@ export default function CharacterList() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
+    setPage(1);
   };
 
   const handlePreviousPage = () => {
