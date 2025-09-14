@@ -1,18 +1,20 @@
 import { fetchCharacters } from 'api/client';
 import { Page } from 'api/client.types';
 import { useEffect, useState } from 'react';
+import { useDebounce } from './useDebounce';
 
 export function useCharacters(query: string, page: number) {
   const [data, setData] = useState<Page | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const debounced = useDebounce(query, 300);
   // TODO: implement 404
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    fetchCharacters({ page, name: query })
+    fetchCharacters({ page, name: debounced || undefined })
       .then((data) => {
         setData(data);
       })
@@ -23,7 +25,7 @@ export function useCharacters(query: string, page: number) {
       .finally(() => {
         setLoading(false);
       });
-  }, [page, query]);
+  }, [page, debounced]);
 
   return { data, loading, error };
 }
