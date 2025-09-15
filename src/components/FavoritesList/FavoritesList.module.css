@@ -8,3 +8,15 @@
   overflow-y: auto;
   padding-block-end: 40px;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.title {
+  flex: 1;
+}

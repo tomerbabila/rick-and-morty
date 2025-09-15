@@ -8,17 +8,22 @@ export default function FavoritesList() {
   const { favorites, removeAll } = useFavorites();
 
   return (
-    <div className={styles.list}>
-      <Button className={styles.removeAll} onClick={removeAll}>
-        Remove All
-      </Button>
-      {!favorites.length ? (
-        <div>No favorites yet</div>
-      ) : (
-        favorites.map((c) => {
-          return <CharacterCard character={c} key={c.id} />;
-        })
-      )}
-    </div>
+    <>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Favorites</h2>
+        <Button className={styles.removeAll} onClick={removeAll}>
+          Remove All
+        </Button>
+      </div>
+      <div className={styles.list}>
+        {!favorites.length ? (
+          <div>No favorites yet</div>
+        ) : (
+          favorites.map((c) => {
+            return <CharacterCard character={c} key={c.id} />;
+          })
+        )}
+      </div>
+    </>
   );
 }
