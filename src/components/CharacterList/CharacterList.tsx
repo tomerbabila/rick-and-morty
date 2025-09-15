@@ -4,6 +4,7 @@ import { useCharacters } from 'hooks/useCharacters';
 
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 import Pagination from 'components/Pagination/Pagination';
+import { Input } from 'ui';
 
 export default function CharacterList() {
   const [query, setQuery] = useState('');
@@ -27,7 +28,12 @@ export default function CharacterList() {
   return (
     <>
       <div className={styles.controls}>
-        <input placeholder='Search by name...' value={query} onChange={handleSearchChange} />
+        <Input
+          className={styles.searchbar}
+          placeholder='Search by name...'
+          value={query}
+          onChange={handleSearchChange}
+        />
         <Pagination
           hasPrevious={!!data?.info.prev}
           hasNext={!!data?.info.next}
