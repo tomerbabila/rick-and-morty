@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 import { CharacterList, FavoritesList } from 'components';
-import { Icon } from 'ui';
+import { Divider, Icon } from 'ui';
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
         <div className={styles.panel}>
           <CharacterList />
         </div>
+        <Divider direction='vertical' />
         <div className={styles.panel}>
           <FavoritesList />
         </div>

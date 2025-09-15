@@ -7,8 +7,8 @@ interface CharacterModalDetailProps {
 
 export default function CharacterModalDetail({ title, value }: CharacterModalDetailProps) {
   return (
-    <span>
-      <strong>{title}:</strong> {value}
-    </span>
+    <p>
+      <strong>{title}:</strong> <span style={{ color: 'var(--color-text-secondary)' }}>{value}</span>
+    </p>
   );
 }

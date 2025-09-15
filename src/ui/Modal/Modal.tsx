@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 import Icon from 'ui/Icon/Icon';
+import Divider from 'ui/Divider/Divider';
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,7 +23,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
             <Icon name='Close' />
           </button>
         </div>
-        <div className={styles.divider}></div>
+        <Divider className='horizontal' />
         {children}
       </div>
     </div>,
