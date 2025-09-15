@@ -6,7 +6,7 @@
   border: 1px solid transparent;
   cursor: pointer;
   user-select: none;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .primary {
@@ -18,9 +18,9 @@
 }
 
 .secondary {
-  background-color: transparent;
+  background-color: var(--color-background);
   border-color: var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 }
 .secondary:hover,
 .secondary:active {

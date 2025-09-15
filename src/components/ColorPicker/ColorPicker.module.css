@@ -1,0 +1,19 @@
+.swatch {
+  padding: 5px;
+  border-radius: 1px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}

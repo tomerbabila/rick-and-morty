@@ -3,6 +3,7 @@ import styles from './FavoritesList.module.css';
 import { useFavorites } from 'state/FavoritesContext';
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 import { Button } from 'ui';
+import ColorPicker from 'components/ColorPicker/ColorPicker';
 
 export default function FavoritesList() {
   const { favorites, removeAll } = useFavorites();
@@ -11,6 +12,7 @@ export default function FavoritesList() {
     <>
       <div className={styles.header}>
         <h2 className={styles.title}>Favorites</h2>
+        <ColorPicker />
         <Button className={styles.removeAll} onClick={removeAll}>
           Remove All
         </Button>
