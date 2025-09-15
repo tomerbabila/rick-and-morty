@@ -38,10 +38,12 @@ const Ctx = createContext<{
   favorites: Character[];
   toggle: (c: Character) => void;
   removeAll: () => void;
+  has: (id: number) => boolean;
 }>({
   favorites: [],
   toggle: () => {},
   removeAll: () => {},
+  has: () => false,
 });
 
 export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -60,7 +62,7 @@ export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children 
     favorites: Object.values(state),
     toggle: (c: Character) => dispatch({ type: 'toggle', character: c }),
     removeAll: () => dispatch({ type: 'removeAll' }),
-    // TODO: add has functions
+    has: (id: number) => !!state[id],
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

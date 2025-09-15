@@ -11,7 +11,7 @@ interface CharacterCardProps {
 
 export default function CharacterCard({ character }: CharacterCardProps) {
   const [showModal, setShowModal] = React.useState(false);
-  const { toggle } = useFavorites();
+  const { toggle, has } = useFavorites();
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
@@ -27,7 +27,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         <img className={styles.img} src={character.image} alt={character.name} />
         <h3 className={styles.name}>{character.name}</h3>
         <button className={styles.favIcon} onClick={handleFavClick}>
-          <Icon name='Star' color='gold' />
+          <Icon name='Star' color={has(character.id) ? 'gold' : ''} />
         </button>
       </div>
       <Modal isOpen={showModal} onClose={closeModal} title={character.name}>
