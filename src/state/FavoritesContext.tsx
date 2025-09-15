@@ -4,16 +4,10 @@ import { Character } from 'api/client.types';
 const LOCAL_STORAGE_KEY = 'rick-and-morty-favorites';
 
 type FavoritesState = Record<number, Character>; // i.e. { [id]: Character }
-type Action =
-  | { type: 'toggle'; character: Character }
-  | { type: 'load'; payload: FavoritesState }
-  | { type: 'removeAll' };
+type Action = { type: 'toggle'; character: Character } | { type: 'removeAll' };
 
 function reducer(state: FavoritesState, action: Action): FavoritesState {
   switch (action.type) {
-    case 'load': {
-      return { ...action.payload };
-    }
     case 'toggle': {
       const { id } = action.character;
       const newState = { ...state };
