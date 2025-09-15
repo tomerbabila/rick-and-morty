@@ -2,15 +2,16 @@ import React from 'react';
 import styles from './FavoritesList.module.css';
 import { useFavorites } from 'state/FavoritesContext';
 import CharacterCard from 'components/CharacterCard/CharacterCard';
+import { Button } from 'ui';
 
 export default function FavoritesList() {
   const { favorites, removeAll } = useFavorites();
 
   return (
     <div className={styles.list}>
-      <button className={styles.removeAll} onClick={removeAll}>
+      <Button className={styles.removeAll} onClick={removeAll}>
         Remove All
-      </button>
+      </Button>
       {!favorites.length ? (
         <div>No favorites yet</div>
       ) : (

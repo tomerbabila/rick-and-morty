@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CharacterCard.module.css';
 import { Character } from 'api/client.types';
-import { Modal, Icon } from 'ui';
+import { Modal, Icon, Button } from 'ui';
 import CharacterModal from 'components/CharacterModal/CharacterModal';
 import { useFavorites } from 'state/FavoritesContext';
 
@@ -26,9 +26,9 @@ export default function CharacterCard({ character }: CharacterCardProps) {
       <div className={styles.card} onClick={openModal}>
         <img className={styles.img} src={character.image} alt={character.name} />
         <h3 className={styles.name}>{character.name}</h3>
-        <button className={styles.favIcon} onClick={handleFavClick}>
+        <Button className={styles.favIcon} onClick={handleFavClick} variant='ghost'>
           <Icon name='Star' color={has(character.id) ? 'var(--color-gold)' : ''} />
-        </button>
+        </Button>
       </div>
       <Modal isOpen={showModal} onClose={closeModal} title={character.name}>
         <CharacterModal character={character} />

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 import Icon from 'ui/Icon/Icon';
 import Divider from 'ui/Divider/Divider';
+import Button from 'ui/Button/Button';
 
 interface ModalProps {
   isOpen: boolean;
@@ -19,9 +20,9 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2>{title}</h2>
-          <button className={styles.closeButton} onClick={onClose}>
+          <Button onClick={onClose} variant='ghost'>
             <Icon name='Close' />
-          </button>
+          </Button>
         </div>
         <Divider className='horizontal' />
         {children}
