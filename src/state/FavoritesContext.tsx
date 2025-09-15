@@ -45,14 +45,11 @@ const Ctx = createContext<{
 });
 
 export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, {});
-
-  useEffect(() => {
+  const [state, dispatch] = useReducer(reducer, {}, () => {
     // Load from local storage
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const data: FavoritesState = raw ? JSON.parse(raw) : {};
-    dispatch({ type: 'load', payload: data });
-  }, []);
+    return raw ? JSON.parse(raw) : {};
+  });
 
   useEffect(() => {
     // Save to local storage
