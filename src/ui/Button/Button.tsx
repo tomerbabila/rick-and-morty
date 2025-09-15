@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-type ButtonVariant = 'primary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 
 type ButtonProps = {
   children: React.ReactNode;
-  variant?: ButtonVariant; // i.e. primary, ghost
+  variant?: ButtonVariant; // i.e. primary, secondary, ghost
   disabled?: boolean;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
