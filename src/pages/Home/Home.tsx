@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Home.module.css';
 import { CharacterList } from '../../components';
+import { Icon } from 'ui';
 
 export default function Home() {
   return (
     <div className={styles.home}>
-      <h1 className={styles.title}>Rick & Morty App</h1>
+      <Icon className={styles.logo} name='Logo' />
       <div className={styles.content}>
         <div className={styles.panel}>
           <CharacterList />

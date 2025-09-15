@@ -7,7 +7,7 @@ export function useCharacters(query: string, page: number) {
   const [data, setData] = useState<Page | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const debounced = useDebounce(query, 300);
+  const debounced = useDebounce(query, 500);
 
   useEffect(() => {
     setLoading(true);

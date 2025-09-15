@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
+import Icon from 'ui/Icon/Icon';
 
 interface ModalProps {
   isOpen: boolean;
@@ -18,8 +19,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
         <div className={styles.header}>
           <h2>{title}</h2>
           <button className={styles.closeButton} onClick={onClose}>
-            {/* TODO: change to svg */}
-            &times;
+            <Icon name='Close' />
           </button>
         </div>
         <div className={styles.divider}></div>

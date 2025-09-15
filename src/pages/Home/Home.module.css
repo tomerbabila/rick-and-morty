@@ -7,8 +7,10 @@
   overflow: hidden;
 }
 
-.title {
-  text-align: center;
+.logo {
+  margin: 0 auto;
+  height: 100px;
+  padding-block-end: 16px;
 }
 
 .content {

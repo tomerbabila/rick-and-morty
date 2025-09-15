@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.css';
+import { Icon } from 'ui';
 
 interface PaginationProps {
   hasPrevious: boolean;
@@ -12,10 +13,10 @@ export default function Pagination({ hasNext, hasPrevious, onNext, onPrevious }:
   return (
     <div className={styles.container}>
       <button disabled={!hasPrevious} onClick={onPrevious}>
-        Previous
+        <Icon name='ChevronLeft' />
       </button>
       <button disabled={!hasNext} onClick={onNext}>
-        Next
+        <Icon name='ChevronRight' />
       </button>
     </div>
   );
