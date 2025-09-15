@@ -3,6 +3,7 @@ import styles from './CharacterCard.module.css';
 import { Character } from 'api/client.types';
 import { Modal, Icon } from 'ui';
 import CharacterModal from 'components/CharacterModal/CharacterModal';
+import { useFavorites } from 'state/FavoritesContext';
 
 interface CharacterCardProps {
   character: Character;
@@ -10,13 +11,14 @@ interface CharacterCardProps {
 
 export default function CharacterCard({ character }: CharacterCardProps) {
   const [showModal, setShowModal] = React.useState(false);
+  const { toggle } = useFavorites();
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
   const handleFavClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log('Favorite clicked for', character.name);
+    toggle(character);
   };
 
   return (

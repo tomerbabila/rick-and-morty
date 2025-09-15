@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Home.module.css';
-import { CharacterList } from '../../components';
+import { CharacterList, FavoritesList } from 'components';
 import { Icon } from 'ui';
 
 export default function Home() {
@@ -12,10 +12,7 @@ export default function Home() {
           <CharacterList />
         </div>
         <div className={styles.panel}>
-          {/* Favorites placeholder */}
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae harum corrupti facilis reiciendis nulla ab
-          ut iste maiores repellendus voluptatum est corporis doloremque, omnis, dignissimos fugiat esse delectus,
-          facere neque.
+          <FavoritesList />
         </div>
       </div>
     </div>

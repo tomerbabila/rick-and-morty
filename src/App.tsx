@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import { Layout, Home } from './pages';
+import { FavoritesProvider } from 'state/FavoritesContext';
 
 function App() {
   return (
-    <Layout>
-      <Home />
-    </Layout>
+    <FavoritesProvider>
+      <Layout>
+        <Home />
+      </Layout>
+    </FavoritesProvider>
   );
 }
 
