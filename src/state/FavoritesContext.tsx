@@ -3,13 +3,16 @@ import { Character } from 'api/client.types';
 
 const LOCAL_STORAGE_KEY = 'rick-and-morty-favorites';
 
-type FavoritesState = Record<number, Character>; // e.g. { [id]: Character }
-type Action = { type: 'toggle'; character: Character } | { type: 'load'; payload: FavoritesState };
+type FavoritesState = Record<number, Character>; // i.e. { [id]: Character }
+type Action =
+  | { type: 'toggle'; character: Character }
+  | { type: 'load'; payload: FavoritesState }
+  | { type: 'removeAll' };
 
 function reducer(state: FavoritesState, action: Action): FavoritesState {
   switch (action.type) {
     case 'load': {
-      return action.payload;
+      return { ...action.payload };
     }
     case 'toggle': {
       const { id } = action.character;
@@ -23,15 +26,22 @@ function reducer(state: FavoritesState, action: Action): FavoritesState {
 
       return newState;
     }
-    // TODO: add removeAll actions
+    case 'removeAll': {
+      return {};
+    }
     default:
       return state;
   }
 }
 
-const Ctx = createContext<{ favorites: Character[]; toggle: (c: Character) => void }>({
+const Ctx = createContext<{
+  favorites: Character[];
+  toggle: (c: Character) => void;
+  removeAll: () => void;
+}>({
   favorites: [],
   toggle: () => {},
+  removeAll: () => {},
 });
 
 export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -40,8 +50,8 @@ export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children 
   useEffect(() => {
     // Load from local storage
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const payload = raw ? JSON.parse(raw) : {};
-    dispatch({ type: 'load', payload });
+    const data: FavoritesState = raw ? JSON.parse(raw) : {};
+    dispatch({ type: 'load', payload: data });
   }, []);
 
   useEffect(() => {
@@ -52,7 +62,8 @@ export const FavoritesProvider: React.FC<React.PropsWithChildren> = ({ children 
   const value = {
     favorites: Object.values(state),
     toggle: (c: Character) => dispatch({ type: 'toggle', character: c }),
-    // TODO: add removeAll, has functions
+    removeAll: () => dispatch({ type: 'removeAll' }),
+    // TODO: add has functions
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

@@ -4,10 +4,13 @@ import { useFavorites } from 'state/FavoritesContext';
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 
 export default function FavoritesList() {
-  const { favorites } = useFavorites();
+  const { favorites, removeAll } = useFavorites();
 
   return (
     <div className={styles.list}>
+      <button className={styles.removeAll} onClick={removeAll}>
+        Remove All
+      </button>
       {!favorites.length ? (
         <div>No favorites yet</div>
       ) : (
