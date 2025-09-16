@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FavoritesList.module.css';
 import { useFavorites } from 'state/FavoritesContext';
 import CharacterCard from 'components/CharacterCard/CharacterCard';
-import { Button } from 'ui';
+import { Button, EmptyState } from 'ui';
 import ColorPicker from 'components/ColorPicker/ColorPicker';
 
 export default function FavoritesList() {
@@ -19,7 +19,7 @@ export default function FavoritesList() {
       </div>
       <div className={styles.list}>
         {!favorites.length ? (
-          <div>No favorites yet</div>
+          <EmptyState message='No favorites yet' />
         ) : (
           favorites.map((c) => {
             return <CharacterCard character={c} key={c.id} />;

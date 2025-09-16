@@ -4,7 +4,8 @@ import { useCharacters } from 'hooks/useCharacters';
 
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 import Pagination from 'components/Pagination/Pagination';
-import { Input } from 'ui';
+import { Input, Loader } from 'ui';
+import EmptyState from 'ui/EmptyState/EmptyState';
 
 export default function CharacterList() {
   const [query, setQuery] = useState('');
@@ -42,14 +43,17 @@ export default function CharacterList() {
         />
       </div>
       <div className={styles.list}>
-        {loading && <div>Loading…</div>}
+        {loading && <Loader />}
         {error && <div>Error: {error.message}</div>}
-        {((!error && !loading && data?.results) || []).map((c) => (
-          <CharacterCard character={c} key={c.id} />
-        ))}
+        {!loading && !error && (!data?.results || data.results.length === 0) && (
+          <EmptyState message='No characters found' />
+        )}
+        {!loading &&
+          !error &&
+          data?.results &&
+          data.results.length > 0 &&
+          data.results.map((c) => <CharacterCard character={c} key={c.id} />)}
       </div>
-      {/* TODO: implement empty state */}
-      {/* TODO: design loading component */}
     </>
   );
 }

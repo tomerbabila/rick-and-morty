@@ -11,6 +11,7 @@
 
 .primary {
   background-color: var(--color-primary);
+  border-color: var(--color-border);
 }
 .primary:hover,
 .primary:active {
