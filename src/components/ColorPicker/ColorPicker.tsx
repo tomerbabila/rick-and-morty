@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { SketchPicker, ColorResult } from 'react-color';
 import styles from './ColorPicker.module.css';
 import { useFavorites } from 'state/FavoritesContext';
-import { Button } from 'ui';
+import { Button } from 'components/ui';
 
 export default function ColorPicker() {
   const [open, setOpen] = useState(false);

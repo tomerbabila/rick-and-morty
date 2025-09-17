@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 import { CharacterList, FavoritesList } from 'components';
-import { Icon } from 'ui';
+import { Icon } from 'components/ui';
 import { useFavorites } from 'state/FavoritesContext';
 
 export default function Home() {

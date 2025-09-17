@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Loader.module.css';
-import { Icon } from 'ui';
+import { Icon } from 'components/ui';
 
 export default function Loader() {
   return (

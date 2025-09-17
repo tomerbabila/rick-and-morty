@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CharacterCard.module.css';
 import { Character } from 'api/client.types';
-import { Modal, Icon, Button } from 'ui';
+import { Modal, Icon, Button } from 'components/ui';
 import CharacterModal from 'components/CharacterModal/CharacterModal';
 import { useFavorites } from 'state/FavoritesContext';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './EmptyState.module.css';
-import { Icon } from 'ui';
+import { Icon } from 'components/ui';
 
 interface EmptyStateProps {
   message?: string;

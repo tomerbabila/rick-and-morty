@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.css';
-import { Button, Icon } from 'ui';
+import { Button, Icon } from 'components/ui';
 
 interface PaginationProps {
   hasPrevious: boolean;

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
-import Icon from 'ui/Icon/Icon';
-import Divider from 'ui/Divider/Divider';
-import Button from 'ui/Button/Button';
+import Icon from 'components/ui/Icon/Icon';
+import { Divider, Button } from 'components/ui';
 
 interface ModalProps {
   isOpen: boolean;

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FavoritesList.module.css';
 import { useFavorites } from 'state/FavoritesContext';
 import CharacterCard from 'components/CharacterCard/CharacterCard';
-import { Button, EmptyState } from 'ui';
+import { Button, EmptyState } from 'components/ui';
 import ColorPicker from 'components/ColorPicker/ColorPicker';
 
 export default function FavoritesList() {

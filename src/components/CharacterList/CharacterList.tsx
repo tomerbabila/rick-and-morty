@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import styles from './CharacterList.module.css';
 import { useCharacters } from 'hooks/useCharacters';
-
 import CharacterCard from 'components/CharacterCard/CharacterCard';
 import Pagination from 'components/Pagination/Pagination';
-import { Input, Loader } from 'ui';
-import EmptyState from 'ui/EmptyState/EmptyState';
+import { Input, Loader, EmptyState } from 'components/ui';
 
 export default function CharacterList() {
   const [query, setQuery] = useState('');
