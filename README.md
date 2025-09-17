@@ -4,6 +4,7 @@
 
 ```bash
 git clone https://github.com/tomerbabila/rick-and-morty.git
+cd rick-and-morty
 npm ci
 npm start
 ```
