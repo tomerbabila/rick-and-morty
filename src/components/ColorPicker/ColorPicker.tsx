@@ -34,7 +34,7 @@ export default function ColorPicker() {
   }, [open]);
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }} ref={pickerRef}>
+    <div className={styles.container} ref={pickerRef}>
       <Button variant='secondary' onClick={() => setOpen(!open)}>
         Change Color
       </Button>
