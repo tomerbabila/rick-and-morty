@@ -1,46 +1,133 @@
-# Getting Started with Create React App
+# Rick and Morty — Tech Design Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. How to Run the Application
 
-## Available Scripts
+```bash
+git clone https://github.com/tomerbabila/rick-and-morty.git
+npm ci
+npm start
+```
 
-In the project directory, you can run:
+**Environment:**
 
-### `npm start`
+- React 19 (Create React App with TypeScript template)
+- Node 18+ and npm 9+
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 2. Component Breakdown
 
-### `npm test`
+**Overall layout:**
+Two main panels side by side:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Left:** Searchable character list (with pagination, modal for details)
+- **Right:** Favorites list (with color customization)
 
-### `npm run build`
+**Main components:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `App.tsx` — root, layout, wraps everything in `FavoritesProvider`
+- `Layout.tsx` — main page layout
+- `Home.tsx` — main page content
+- `Modal.tsx` - using `react-portal` to show the modal
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Left side (Character List)**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `CharacterList.tsx` — fetches and renders character cards with pagination and search
+- `Input.tsx` — controlled input for search
+- `CharacterCard.tsx` — shows character info and favorite toggle
+- `CharacterModal.tsx` — shows character details in a modal (using portal)
 
-### `npm run eject`
+**Right side (Favorites Panel)**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `FavoritesList.tsx` — list of favorite cards (using `CharacterCard.tsx`)
+- `ColorPicker.tsx` — lets user customize panel background
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 3. Services and State Management
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### API (`api/client.ts`)
 
-## Learn More
+- Fetches characters data from Rick & Morty API using search and pagination
+- Type definitions are based on the API documentation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### State Management (`state/FavoritesContext.tsx`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Uses `useReducer` + `useContext`
+- Global state:
+
+```ts
+{
+  favorites: Record<number, Character[]>; // {[id]: Character}
+  color: string;
+}
+```
+
+- Actions:
+- **Actions:**
+  - `toggle`: Adds or removes a character from favorites
+  - `removeAll`: Clears all favorites
+  - `setColor`: Updates the background color of the favorites panel
+  - `has`: Checks if a character is currently favorited
+- State is persisted in `localStorage`
+
+---
+
+## 4. Interaction Flow Diagram
+
+```
+App
+ ├── Layout
+ │    ├── Modal (root)
+ │    └── Home
+ │         ├── CharacterList
+ │         │     ├── SearchBar (Input)
+ │         │     ├── CharacterCard[]
+ │         │     └── CharacterModal
+ │         └── FavoritesList
+ │               ├── CharacterCard[]
+ │               └── ColorPicker
+```
+
+**Search flow:**
+type in `SearchBar` → debounced query → fetch API → display results
+
+**Favorites flow:**
+click favorite button → update context → save to localStorage → show in panel
+
+**Modal flow:**
+click card → open modal and show data → fetch origin → close on outside click or X
+
+---
+
+## 7. Future Features & Developments
+
+To continue building on this assignment, here are planned or possible features:
+
+### Testing
+
+- Add unit tests (Jest + React Testing Library) for:
+  - `FavoritesContext` reducer logic
+  - Character list rendering and search behavior
+  - Modal open/close behavior
+- Add integration tests for the full user flow (search → select → favorite)
+
+### Favorites Improvements
+
+- Add favorite/unfavorite button inside the `CharacterModal`
+- Allow drag & reorder favorites
+
+### Performance
+
+- Cache API responses to avoid refetching characters already loaded
+
+### Deployment
+
+- Add simple deployment using GitHub Pages (via `gh-pages` branch) or Vercel for instant hosting
+
+---
+
+## 8. Links
+
+- API Docs: [https://rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation)
+- Repo: [https://github.com/tomerbabila/rick-and-morty](https://github.com/tomerbabila/rick-and-morty)
